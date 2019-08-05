@@ -9,10 +9,12 @@ var RatingSchema = new mongoose.Schema({
 var MenteeSchema = new mongoose.Schema({
     name: {type: String, required:[true, "name is required"], minLength:3},
     description: {type: String, required:[true, "description is required"], minLength:3},
-})
+    location:[String],
+}, {timestamps: true})
 var MentorSchema = new mongoose.Schema({
     name: {type: String, required:[true, "name is required"], minLength:3},
     description: {type: String, required:[true, "description is required"], minLength:3},
+    location:String,
     url : String,
     avgRating : Number,
     skills:[String],

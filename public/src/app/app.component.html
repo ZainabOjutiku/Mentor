@@ -1,4 +1,3 @@
-
 <header class="masthead d-flex" id="home">
   <div class="container text-center my-auto">
     <h1 class="mb-1">Mentorship</h1>
@@ -9,192 +8,197 @@
   </div>
   <div class="overlay"></div>
 </header>
- <!-- About -->
- <section class="content-section bg-light" id="about">
+<!-- About -->
+<section class="content-section bg-light" id="about">
   <div class="container text-center">
     <div class="row">
       <div class="col-lg-10 mx-auto">
-        <h2>Have you always wanted to be a mentor to someone in need, but didn’t think you had the time? Do you want to share your personal and professional experiences to help make a difference in a  person’s life?
+        <h2>Have you always wanted to be a mentor to someone in need, but didn’t think you had the time? Do you want to
+          share your personal and professional experiences to help make a difference in a person’s life? Then sign up
+          and become one of our mentors,we are pleased to be a platform to help you give back to the society......
 
         </h2>
         <!-- <img src="http://www.jposc.undp.org/content/dam/jposc/img/Mentoring/Capture2.PNG" alt="" style="width:600px;"> -->
         <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">Meet Our Mentors</a>
+        <a class="btn btn-primary btn-xl js-scroll-trigger offset-sm-1" (click)="loginComponent()">I Need A Mentor</a>
+
       </div>
     </div>
   </div>
+
+
 </section>
+
+<div *ngIf="logComponent == true" id="login">
+  <section class="content-section " id="login" style="background-color:#E6B331;">
+    <div class="container">
+      <div class="col-sm-6 offset-sm-3 mt-5">
+        <div class="card">
+          <div class="card-header">
+            <h4>Sign Up</h4>
+          </div>
+          <div class="card-body ">
+
+
+            <form (submit)="makeNewMentee()">
+              <div class="form-group">
+                <label for="inputname">Name</label>
+                <input type="text" class="form-control" id="inputname" name="newMentee.name"
+                  [(ngModel)]="newMentee.name" placeholder="Enter name" />
+
+              </div>
+
+              <div class="form-group">
+                <label for="inputname2">Description</label>
+                <input type="text" class="form-control" id="inputname2" name="newMentee.description"
+                  [(ngModel)]="newMentee.description" placeholder="Enter description" />
+
+              </div>
+
+
+              <input type='submit' value="Submit" class="button btn btn-primary offset-sm-4" />
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
 <!-- Services -->
 <section class="content-section bg-primary text-white text-center" id="services">
   <div class="container">
     <div class="content-section-heading">
-<!--      <h3 class="text-secondary mb-0">Services</h3>-->
       <h2 class="mb-5">Meet Our Mentors</h2>
 
     </div>
-    <div class="" >
+    <div class="">
       <div class="col-lg-3 col-md-6 mb-5 mb-lg-0 d-inline-block" *ngFor="let mentor of allMentors">
-        <a class="js-scroll-trigger" [routerLink]="['/mentor',mentor._id]" href="#person"><img class="rounded-circle" src="{{mentor.url}}" alt="" style="width:200px; height:180px;">
+        <a class="js-scroll-trigger" [routerLink]="['/mentor',mentor._id]" href="#about"><img class="rounded-circle"
+            src="{{mentor.url}}" alt="" style="width:200px; height:180px;">
         </a>
         <h4>
           <strong>{{mentor.name}}</strong>
         </h4>
         <p class="text-faded mb-0">{{mentor.skills}}</p>
+        <p class="text-faded mb-0">{{mentor.location}}</p>
+
       </div>
     </div>
 
   </div>
   <div>
-<!--    <a class="btn btn-primary mt-5" [routerLink]="['/mentor/new']">Become A Mentor</a>-->
-    <a class="btn btn-dark btn-xl js-scroll-trigger mt-5" href="#sign up">Become A Mentors</a>
+    <a class="btn btn-dark btn-xl js-scroll-trigger mt-5" (click)="createMentorComponent()">Become A Mentor</a>
 
   </div>
 
 </section>
 
-<!--<app-show [viewMentor]="currentCMentorfornested"></app-show>-->
 <div id="person">
   <router-outlet></router-outlet>
 
 </div>
 
-<!--&lt;!&ndash; Callout &ndash;&gt;-->
-<!--<section class="callout">-->
-<!--  <div class="container text-center">-->
-<!--    <h2 class="mx-auto mb-5">Welcome to-->
-<!--      <em>your</em>-->
-<!--      next website!</h2>-->
-<!--    <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/template-overviews/stylish-portfolio/">Download Now!</a>-->
-<!--  </div>-->
-<!--</section>-->
+
 
 <!-- Portfolio -->
-<section class="content-section" id="sign up" style="background-color:#E6B331;">
-  <div class="container" >
+<section class="content-section" id="sign up" style="background-color:#E6B331;" *ngIf="createComponent == true">
+  <div class="container">
     <div class="content-section-heading text-center">
 
-<!--      <h2 class="mb-5">Recent Projects</h2>-->
     </div>
     <div class="card col-sm-6 offset-sm-3 mt-5">
       <div class="card-header">
         <h4>Thanks for volunteering to be a Mentor</h4>
       </div>
       <div class="card-body ">
-        <!--    <h4 *ngIf="this.myError"> {{ this.myError }} </h4>-->
 
 
-        <!--    <h5 *ngIf="this.newProduct.title.length < 5 && this.newProduct.title.length > 0"> Error: must be min 4</h5>-->
         <form (submit)=" makeNewMentor()">
           <div class="form-group">
             <label for="inputname">Name</label>
-            <input type="text" class="form-control"  id="inputname" name="newMentor.name" [(ngModel)]="newMentor.name" placeholder="Enter name"/>
-                   <small id="inputnameHelp" class="form-text text-muted" *ngIf="newMentor.name.length < 3 && newMentor.name.length > 0"> Name is required.</small>
+            <input type="text" class="form-control" id="inputname" name="newMentor.name" [(ngModel)]="newMentor.name"
+              placeholder="Enter name" />
+            <small id="inputnameHelp" class="form-text text-muted"
+              *ngIf="newMentor.name.length < 3 && newMentor.name.length > 0"> Name is required.</small>
 
           </div>
           <div class="form-group">
             <label for="inputname1">Skills</label>
-            <input type="text" class="form-control" id="inputname1" name="newMentor.skills" [(ngModel)]="newMentor.skills" placeholder="Enter skills"/>
-                   <small id="inputname1Help" class="form-text text-muted" *ngIf="newMentor.skills.length < 3 && newMentor.skills.length > 0"> Skills is required.</small>
+            <input type="text" class="form-control" id="inputname1" name="newMentor.skills"
+              [(ngModel)]="newMentor.skills" placeholder="Enter skills" />
+            <small id="inputname1Help" class="form-text text-muted"
+              *ngIf="newMentor.skills.length < 3 && newMentor.skills.length > 0"> Skills is required.</small>
 
           </div>
           <div class="form-group">
             <label for="inputname2">Description</label>
-            <input type="text" class="form-control" id="inputname2" name="newMentor.description" [(ngModel)]="newMentor.description" placeholder="Enter description"/>
-                   <small id="inputname2Help" class="form-text text-muted" *ngIf="newMentor.description.length < 3 && newMentor.description.length > 0"> Description is required.</small>
+            <input type="text" class="form-control" id="inputname2" name="newMentor.description"
+              [(ngModel)]="newMentor.description" placeholder="Enter description" />
+            <small id="inputname2Help" class="form-text text-muted"
+              *ngIf="newMentor.description.length < 3 && newMentor.description.length > 0"> Description is
+              required.</small>
+
+          </div>
+          <div class="form-group">
+            <label for="inputState">Location</label>
+            <select name="newMentor.location" [(ngModel)]="newMentor.location" id="inputState" class="form-control">
+              <option *ngFor="let x of locations" value="{{x}}">{{x}}</option>
+            </select>
+
 
           </div>
           <div class="form-group">
             <label for="inputname2">Image</label>
-            <input type="text" class="form-control" id="inputname3" name="newMentor.url" [(ngModel)]="newMentor.url" placeholder="Enter image"/>
-                   <small id="inputname2Help" class="form-text text-muted" *ngIf="newMentor.url.length < 3 && newMentor.url.length > 0"> Image is required.</small>
+            <input type="text" class="form-control" id="inputname3" name="newMentor.url" [(ngModel)]="newMentor.url"
+              placeholder="Enter image" />
+            <small id="inputname2Help" class="form-text text-muted"
+              *ngIf="newMentor.url.length < 3 && newMentor.url.length > 0"> Image is required.</small>
 
+
+
+            <input type="submit" value="Submit" class="button btn btn-primary offset-sm-4"/>
           </div>
 
-          <input type="submit" value="Submit" class="button btn btn-primary offset-sm-4"/>
-         
+
+
         </form>
       </div>
     </div>
 
 
+
+
   </div>
+
+  
 </section>
 
 
-<!--&lt;!&ndash; Portfolio &ndash;&gt;-->
 
-<!--<section class="content-section" id="portfolio">-->
-<!--  <div class="container">-->
-<!--    <div class="content-section-heading text-center">-->
-<!--      <h3 class="text-secondary mb-0">Portfolio</h3>-->
-<!--      <h2 class="mb-5">Recent Projects</h2>-->
-<!--    </div>-->
-<!--    <div class="row no-gutters">-->
-<!--      <div class="col-lg-6">-->
-<!--        <a class="portfolio-item" href="#">-->
-<!--          <span class="caption">-->
-<!--            <span class="caption-content">-->
-<!--              <h2>Stationary</h2>-->
-<!--              <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>-->
-<!--            </span>-->
-<!--          </span>-->
-<!--          <img class="img-fluid" src="img/portfolio-1.jpg" alt="">-->
-<!--        </a>-->
-<!--      </div>-->
-<!--      <div class="col-lg-6">-->
-<!--        <a class="portfolio-item" href="#">-->
-<!--          <span class="caption">-->
-<!--            <span class="caption-content">-->
-<!--              <h2>Ice Cream</h2>-->
-<!--              <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>-->
-<!--            </span>-->
-<!--          </span>-->
-<!--          <img class="img-fluid" src="img/portfolio-2.jpg" alt="">-->
-<!--        </a>-->
-<!--      </div>-->
-<!--      <div class="col-lg-6">-->
-<!--        <a class="portfolio-item" href="#">-->
-<!--          <span class="caption">-->
-<!--            <span class="caption-content">-->
-<!--              <h2>Strawberries</h2>-->
-<!--              <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>-->
-<!--            </span>-->
-<!--          </span>-->
-<!--          <img class="img-fluid" src="img/portfolio-3.jpg" alt="">-->
-<!--        </a>-->
-<!--      </div>-->
-<!--      <div class="col-lg-6">-->
-<!--        <a class="portfolio-item" href="#">-->
-<!--          <span class="caption">-->
-<!--            <span class="caption-content">-->
-<!--              <h2>Workspace</h2>-->
-<!--              <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>-->
-<!--            </span>-->
-<!--          </span>-->
-<!--          <img class="img-fluid" src="img/portfolio-4.jpg" alt="">-->
-<!--        </a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</section>-->
-
-
-<!-- For Jenny's chat -->
-<section class="content-section bg-primary text-white">
+<section id="find" class="content-section bg-dark text-white">
   <div class="container text-center">
     <h2 class="mb-4">Find a Mentor close to you...</h2>
-    <a href="#" class="btn btn-xl btn-light mr-4">Go Back!</a>
-    <a href="#contact" class="btn btn-xl btn-dark">Search!</a>
+    <select name="newMentor2.location" [(ngModel)]="newMentor2.location" id="inputState"
+      class="form-control col-sm-4 offset-sm-4">
+      <option *ngFor="let x of locations" value="{{x}}">{{x}}</option>
+    </select>
+    <a href="#" class="btn btn-xl btn-light mt-1 mr-4">Go Back!</a>
+
+    <a href="#contact" class="btn btn-xl btn-warning mt-1" (click)="searchState()">Search!</a>
+
+
   </div>
 </section>
 
 <!-- Map -->
-<section id="contact" class="map">
-  <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
+<section>
+  <div #gmap style="width: 100%; height: 500px; background-color: #E6B331"></div>
+
+
   <br />
-  <small>
-    <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
-  </small>
+
 </section>
 
 <!-- Footer -->
@@ -202,22 +206,22 @@
   <div class="container">
     <ul class="list-inline mb-5">
       <li class="list-inline-item">
-        <a class="social-link rounded-circle text-white mr-3" href="#">
-          <i class="icon-social-facebook"></i>
+        <a class="social-link rounded-circle text-white mr-3" href="mailto:zainabojutiku@gmail.com">
+          <i class="icon-social-linkedin"></i>
         </a>
       </li>
       <li class="list-inline-item">
-        <a class="social-link rounded-circle text-white mr-3" href="#">
-          <i class="icon-social-twitter"></i>
+        <a class="social-link rounded-circle text-white mr-3" href="https://www.linkedin.com/in/zainab-ojutiku/">
+          <i class="icon-social-linkedin"></i>
         </a>
       </li>
       <li class="list-inline-item">
-        <a class="social-link rounded-circle text-white" href="#">
+        <a class="social-link rounded-circle text-white" href="https://github.com/ZainabOjutiku/Mentorship">
           <i class="icon-social-github"></i>
         </a>
       </li>
     </ul>
-    <p class="text-muted small mb-0">Copyright &copy; Your Website 2019</p>
+    <p class="text-muted small mb-0">Copyright &copy; Mentorship 2019</p>
   </div>
 </footer>
 <!--<router-outlet></router-outlet>-->

@@ -20,7 +20,7 @@ app.set('view engine', 'ejs');
 app.use(express.static( __dirname + '/public/dist/public' ));
 
 require('./server/config/routes.js')(app)
-mongoose.connect('mongodb://localhost/Mentorship');
+mongoose.connect('mongodb://localhost/Mentorship', { userNewUrlParser: true});
 
 require("./server/config/mongoose.js");
 //sockets

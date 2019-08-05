@@ -9,6 +9,10 @@ module.exports = function(app) {
         console.log("new mentor");
         mentors.NewMentors(req,res);
     });
+    app.post('/newmentee', function (req, res) {
+        console.log("new mentee");
+        mentors.NewMentee(req,res);
+    });
     app.post('/newRating/:id', function (req, res) {
         console.log("ratings",req.params.id);
         mentors.NewRating(req,res);
@@ -27,10 +31,6 @@ module.exports = function(app) {
     app.delete('/delete/rating/:id', function (req, res) {
         mentors.destroyRating(req,res);
     });
-    //chat componenent
-    // app.get('/chat', function(req, res){
-    //     mentors.chat(req, res);
-    // })
 
     app.all("*", (req,res,next) => {
         res.sendFile(path.resolve("./public/dist/public/index.html"))

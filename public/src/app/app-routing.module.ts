@@ -5,8 +5,12 @@ import { ShowComponent } from './show/show.component';
 
 
 const routes: Routes = [
-  {path: "", pathMatch: "full", component: HomeComponent },
-  {path: "mentor/:id", component: ShowComponent},
+  // {path: '', pathMatch: 'full', component: HomeComponent },
+  {path: 'mentor/:id', component: ShowComponent},
+  { path: 'home', component: HomeComponent },
+
+  // { path: '**', component: PageNotFoundComponent }
+
 ];
 
 @NgModule({

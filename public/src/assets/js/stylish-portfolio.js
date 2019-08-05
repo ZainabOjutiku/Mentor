@@ -50,6 +50,7 @@ var onMapMouseleaveHandler = function(event) {
   that.on('click', onMapClickHandler);
   that.off('mouseleave', onMapMouseleaveHandler);
   that.find('iframe').css("pointer-events", "none");
+  console.log("anyhting")
 }
 var onMapClickHandler = function(event) {
   var that = $(this);

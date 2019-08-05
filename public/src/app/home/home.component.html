@@ -1,0 +1,40 @@
+<section class="content-section " id="login" style="background-color:#E6B331;">
+    <!-- section class="content-section" id="login" style="background-color:#E6B331;" -->
+    <div class="container">
+        <div class="col-sm-6 offset-sm-3 mt-5">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Sign Up</h4>
+                </div>
+                <div class="card-body ">
+                    <!--    <h4 *ngIf="this.myError"> {{ this.myError }} </h4>-->
+
+
+                    <!--    <h5 *ngIf="this.newProduct.title.length < 5 && this.newProduct.title.length > 0"> Error: must be min 4</h5>-->
+                    <form (submit)=" NewMentor()">
+                        <div class="form-group">
+                            <label for="inputname">Name</label>
+                            <input type="text" class="form-control" id="inputname" name="newMentor.name"
+                                [(ngModel)]="newMentor.name" placeholder="Enter name" />
+                            <!--        <small id="inputnameHelp" class="form-text text-muted" *ngIf="newPet.name.length < 3 && newPet.name.length > 0"> Name is required.</small>-->
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputname2">Description</label>
+                            <input type="text" class="form-control" id="inputname2" name="newMentor.description"
+                                [(ngModel)]="newMentor.description" placeholder="Enter description" />
+                            <!--        <small id="inputname2Help" class="form-text text-muted" *ngIf="newPet.description.length < 3 && newPet.description.length > 0"> Description is required.</small>-->
+
+                        </div>
+
+
+                        <input type="submit" value="Submit" class="button btn btn-primary offset-sm-4" />
+                        <!--      <button class="button btn btn-primary offset-sm-1" [routerLink]="['/pets']" >Cancel</button>-->
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

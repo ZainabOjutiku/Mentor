@@ -16,28 +16,27 @@ module.exports={
             }
         })
     },
-    // NewMentor : function(req, res){
-    //     console.log("POST DATA", req.body);
-    //     var newMentor = new Mentor({name : req.body.name, url : req.body.url, ratings : [], description : req.body.description,skills : req.body.skills });
-    //     newMentor.save(function(err){
-    //         if (err){
-    //             res.json({message:"Could not be found", data:newMentor})
-    //         }
-    //         else{
-    //             res.json({message : "Success", data:newMentor})
-    //             console.log("POST DATAhhh", req.body);
-    //         }
-    //     })
-    // },
     NewMentors : function(req,res){
         console.log("POST DATA", req.body);
-        var newMentor =new Mentor({name : req.body.name, url : req.body.url, ratings : [], description : req.body.description,skills : req.body.skills})
+        var newMentor =new Mentor({name : req.body.name, url : req.body.url, ratings : [], description : req.body.description,skills : req.body.skills,location : req.body.location})
         newMentor.save(function(err){
             if (err){
                 res.json({message:"Can not create data", error: err })
             }
             else{
                 res.json({message : "Success", data : newMentor})
+            }
+        })
+    },
+    NewMentee : function(req,res){
+        console.log("Mentee", req.body);
+        var newMentee =new Mentee({name : req.body.name,description : req.body.description,location : req.body.location})
+        newMentee.save(function(err){
+            if (err){
+                res.json({message:"Can not create data", error: err })
+            }
+            else{
+                res.json({message : "Success", data : newMentee})
             }
         })
     },

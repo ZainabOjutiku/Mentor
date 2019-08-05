@@ -23,24 +23,24 @@
               <p *ngIf="rating.stars == 4">⭐⭐⭐⭐</p>
               <p *ngIf="rating.stars == 5">⭐⭐⭐⭐⭐</p>
               <p>{{rating.reviews}}</p>
-              <small class="text-muted">Posted by {{rating.name}} on 3/1/17</small>
+              <small class="text-muted">Posted by {{rating.name}} on 4/26/2019</small>
               <hr>
             </div>
             <h5 class="card-title">Add a Review:</h5>
-            <form (submit)='addRating(viewMentor._id, stars, reviews,name)'>
-              <select #stars>
+
+
+            <form (submit)='addRating(viewMentor._id)'>
+              <select name="newRating.stars"[(ngModel)]="newRating.stars">
                 <option value='1'> ⭐</option>
                 <option value='2'> ⭐⭐</option>
                 <option value='3'> ⭐⭐⭐</option>
                 <option value='4'> ⭐⭐⭐⭐</option>
                 <option value='5'> ⭐⭐⭐⭐⭐</option>
               </select>
-              Comments:<input type="text" placeholder="Comment" #reviews>
-              Name:<input type="text" placeholder="name" #name>
+              Comments:<input type="text" name="newRating.reviews"[(ngModel)]="newRating.reviews" placeholder="Comment" >
+              Name:<input type="text" name="newRating.name"[(ngModel)]="newRating.name"placeholder="name">
               <input type="submit" value="Add Your Review">
             </form>
-            <!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
-            <!-- <a [routerLink]="['/chat']">Chat with one of our mentor</a> -->
           </div>
         </div>
       </div>

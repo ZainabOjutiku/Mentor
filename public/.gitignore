@@ -40,6 +40,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+/Users/zainabojutiku/Documents/MEAN_STACK/MentorShip/public/api.env
 
 # System Files
 .DS_Store
